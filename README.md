@@ -1,101 +1,89 @@
-//# sakib-Bank-Management-System-
-#include <iostream>
-#include <conio.h>
+# 🌍 Flowchart Visualization with Mermaid
 
-using namespace std;
+This diagram represents interconnected relationships with cycles, showing dependencies between different entities.
 
-class Bank {
-    char name[100], add[100], Y;
-    int balance;
+```mermaid
+graph TD;
+  %% 🌳 Cycle 1: Apple → Human → Tree → Soil → Apple
+  A["🍏 Apple"] -->|Eaten by| B["👨 Human"];
+  B -->|Eats| A;
 
-  public:
-    void open_account();
-    void deposit_money();
-    void withdraw_money();
-    void display_account();
-};
+  B -->|Plants| C["🌲 Tree"];
+  C -->|Planted by| B;
 
-void Bank::open_account() {
-    cout << "Enter your full name: ";
-    cin.ignore();
-    cin.getline(name, 100);
-    cout << "Enter your address: ";
-    cin.getline(add, 100);
-    cout << "What type of account do you want to open? Saving (s) or current (c): ";
-    cin >> Y;
-    cout << "Enter the initial deposit amount: ";
-    cin >> balance;
-    cout << "Your account has been created." << endl;
-}
+  C -->|Grows in| D["🌱 Soil"];
+  D -->|Nourishes| C;
 
-void Bank::deposit_money() {
-    int amount;
-    cout << "Enter the amount you want to deposit: ";
-    cin >> amount;
-    balance += amount;
-    cout << "Total amount after deposit: " << balance << endl;
-}
+  D -->|Supports growth of| A;
+  A -->|Receives nutrients from| D;
 
-void Bank::withdraw_money() {
-    float amount;
-    cout << "Enter the amount you want to withdraw: ";
-    cin >> amount;
-    if (amount > balance) {
-        cout << "Insufficient balance." << endl;
-    } else {
-        balance -= amount;
-        cout << "Amount withdrawn. Remaining balance: " << balance << endl;
-    }
-}
+  %% ☀️ Cycle 2: Sun → Plant → Oxygen → Human → Sun
+  E["☀️ Sun"] -->|Provides sunlight| F["🌿 Plant"];
+  F -->|Uses sunlight| E;
 
-void Bank::display_account() {
-    cout << "Name: " << name << endl;
-    cout << "Address: " << add << endl;
-    cout << "Account Type: " << Y << endl;
-    cout << "Balance: " << balance << endl;
-}
+  F -->|Releases| G["💨 Oxygen"];
+  G -->|Produced by| F;
 
-int main() {
-    int ch, x;
-    Bank obj;
+  G -->|Inhaled by| H["👨 Human"];
+  H -->|Breathes| G;
 
-    do {
-        cout << "1) Open account" << endl;
-        cout << "2) Deposit money" << endl;
-        cout << "3) Withdraw money" << endl;
-        cout << "4) Display account" << endl;
-        cout << "5) Exit" << endl;
-        cout << "Select an option from above: ";
-        cin >> ch;
+  H -->|Needs energy from| E;
+  E -->|Provides warmth| H;
 
-        switch (ch) {
-            case 1:
-                cout << "Open account" << endl;
-                obj.open_account();
-                break;
-            case 2:
-                cout << "Deposit money" << endl;
-                obj.deposit_money();
-                break;
-            case 3:
-                cout << "Withdraw money" << endl;
-                obj.withdraw_money();
-                break;
-            case 4:
-                cout << "Display account" << endl;
-                obj.display_account();
-                break;
-            case 5:
-                exit(0);
-            default:
-                cout << "Invalid option. Please try again." << endl;
-                break;
-        }
+  %% 🌊 Cycle 3: Water → Fish → Bird → Cloud → Rain → Water
+  I["💧 Water"] -->|Habitat for| J["🐟 Fish"];
+  J -->|Lives in| I;
 
-        cout << "\nDo you want to select another option? (Y/N): ";
-        cin >> x;
-    } while (x == 'Y' || x == 'y');
+  J -->|Eaten by| K["🐦 Bird"];
+  K -->|Preys on| J;
 
-    getch();
-    return 0;
-}
+  K -->|Flies near| L["☁️ Cloud"];
+  L -->|Provides shade to| K;
+
+  L -->|Turns into| M["🌧️ Rain"];
+  M -->|Forms from| L;
+
+  M -->|Refills| I;
+  I -->|Receives from| M;
+
+  %% 🚗 Cycle 4: Car → Fuel → Factory → Air Pollution → Human → Car
+  N["🚗 Car"] -->|Runs on| O["⛽ Fuel"];
+  O -->|Used in| N;
+
+  O -->|Processed at| P["🏭 Factory"];
+  P -->|Produces| O;
+
+  P -->|Emits| Q["🌫️ Air Pollution"];
+  Q -->|Caused by| P;
+
+  Q -->|Affects| R["👨 Human"];
+  R -->|Suffers from| Q;
+
+  R -->|Drives| N;
+  N -->|Used by| R;
+
+  %% 🎓 Cycle 5: Teacher → Student → Knowledge → Books → Teacher
+  S["🎓 Teacher"] -->|Teaches| T["🧑‍🎓 Student"];
+  T -->|Learns from| S;
+
+  T -->|Acquires| U["📚 Knowledge"];
+  U -->|Gained by| T;
+
+  U -->|Stored in| V["📖 Books"];
+  V -->|Contains| U;
+
+  V -->|Used by| S;
+  S -->|Reads| V;
+
+  %% 💻 Cycle 6: Computer → User → Internet → Data → Computer
+  W["💻 Computer"] -->|Used by| X["👤 User"];
+  X -->|Operates| W;
+
+  X -->|Accesses| Y["🌐 Internet"];
+  Y -->|Browsed by| X;
+
+  Y -->|Stores| Z["📊 Data"];
+  Z -->|Processed by| Y;
+
+  Z -->|Stored on| W;
+  W -->|Analyzes| Z;

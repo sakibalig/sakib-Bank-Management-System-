@@ -1,0 +1,1 @@
+capital of india is new delhi

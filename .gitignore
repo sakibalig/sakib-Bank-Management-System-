@@ -1,0 +1,19 @@
+# env
+process.md
+env/
+.venv/
+.env
+
+# pycache
+__pycache__/
+
+# scripts
+scripts/
+bin.py
+prompt.py
+repoana.py
+temp.py
+input.txt
+todo.md
+
+.DS_Store

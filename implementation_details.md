@@ -14,27 +14,41 @@
 - Version Control: Not explicitly mentioned
 
 ## 2. System Architecture & Flow
-
-### Architecture Diagram
-```mermaid
+mermaid```
 graph TD
     %% Tool & Library Relationships
     subgraph Core["Core Libraries"]
-        requests & python-dotenv & pyngrok & fastapi & uvicorn & httpx & celery & redis & python-multipart & starlette & pydantic-settings & PyJWT & pydantic & websockets & aiohttp & tenacity & PyYAML & aiofiles & gmsaas
+        requests -->|Uses| python-dotenv
+        requests -->|Uses| pyngrok
+        requests -->|Uses| fastapi
+        fastapi -->|Runs on| uvicorn
+        fastapi -->|Interacts with| httpx
+        fastapi -->|Uses| starlette
+        fastapi -->|Uses| pydantic
+        pydantic -->|Uses| pydantic-settings
+        PyJWT -->|Handles| authentication
+        celery -->|Uses| redis
+        python-multipart -->|Handles| form-data
+        websockets -->|Supports| async communication
+        aiohttp -->|Supports| async requests
+        tenacity -->|Handles| retries
+        PyYAML -->|Parses| YAML
+        aiofiles -->|Handles| file I/O
+        gmsaas -->|Manages| Android devices
     end
-    
-    subgraph Dev["Development Tools"]
-        [Dev tools found]
-    end
-    
-    subgraph Build["Build Process"]
-        [Build tools]
-    end
-    
-    %% Show relationships
-    [Tool interactions]
-```
 
+    subgraph Dev["Development Tools"]
+        devtools1["Development Tools Found"]
+    end
+
+    subgraph Build["Build Process"]
+        buildtools["Build Tools"]
+    end
+
+    %% Show relationships
+    Core --> Dev
+    Core --> Build
+```
 ## 3. Library Dependencies
 ### Primary Dependencies
 - requests~=2.32.3
@@ -86,7 +100,7 @@ flowchart TD
 ```mermaid
 graph TD
     %% Tool integration flow
-    [Tool interaction diagram]
+    ToolInteractionDiagram["Tool Interaction Diagram"]
 ```
 
 ## 6. Configuration & Setup
